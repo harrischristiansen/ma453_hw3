@@ -28,7 +28,21 @@
 	$f : \mathbb{R} \rightarrow \mathbb{R}$ is defined by $f(x) = \sin(x)$ \\
 	$g : \mathbb{R} \rightarrow \mathbb{R}$ is defined by $g(x) = e^x$
   
-	{\bfseries Solution.}
+	{\bfseries Solution.} Let $f, g$ be defined as above, and $x \in \mathbb{R}$ be any value.
+	
+	$f \circ g$
+	\begin{align*}
+		f \circ g (x) &= f(g(x)) \\
+		&= f(e^x) \\
+		&= \sin(e^x) \\
+	\end{align*}
+	
+	$g \circ f$
+	\begin{align*}
+		g \circ f (x) &= g(f(x)) \\
+		&= g(\sin(x)) \\
+		&= e^{\sin(x)}
+	\end{align*}
 
 %%% Problem p64 E.5
 \item {\bfseries p64 E.5.} $f$ is a bijective function. Describe its inverse.
@@ -39,26 +53,60 @@
 		3 \hspace{6mm} 1 \hspace{6mm} 2 \hspace{6mm} 4 \\
 	\end{pmatrix}$
   
-	{\bfseries Solution.}
+	{\bfseries Solution.} The inverse matrix $f^{-1}: B \rightarrow A$ is defined as:
+	
+	$\begin{pmatrix}
+		1 \hspace{6mm} 2 \hspace{6mm} 3 \hspace{6mm} 4 \\
+		b \hspace{6mm} c \hspace{6mm} a \hspace{6mm} d \\
+	\end{pmatrix}$
+	
+	Since this matrix satisfies the property $\forall x \in B, f \circ f^{-1} (x) = x$, we can verify that it is the correct inverse of $f$.
 
 %%% Problem p64 E.6
 \item {\bfseries p64 E.6.} $f$ is a bijective function. Describe its inverse.
 
 	$G$ is a group, $a \in G$, and $f : G \rightarrow G$ is defined by $f(x) = ax$.
   
-	{\bfseries Solution.}
+	{\bfseries Solution.} The inverse $f^{-1}: G \rightarrow G$ is defined as:
+	
+	$$f^{-1}(x) = a^{-1}x$$
+	
+	where $a^{-1} \in G$ such that $a^{-1}a = aa^{-1} = e$.
+	
+	This can be verified by the composition: $\forall x \in G, f \circ f^{-1} (x) = x$
+	\begin{align*}
+		f \circ f^{-1} (x) &= f(f^{-1}(x)) \\
+		&= f(a^{-1}x) \\
+		&= aa^{-1}x \\
+		&= ex \\
+		&= x
+	\end{align*} \qed
   
 \newpage
 
 %%% Problem p65 G.1
-\item {\bfseries p65 G.1.} Let $A$, $B$, and $C$ by sets. Prove that if $g \circ f$ is injective, then $f$ is injective.
+\item {\bfseries p65 G.1.} Let $A$, $B$, and $C$ by sets and let $f: A \rightarrow B$ and $g: B \rightarrow C$ be functions. Prove that if $g \circ f$ is injective, then $f$ is injective.
   
-	{\bfseries Solution.}
+	{\bfseries Solution.} Let $f, g$ be defined as above.
+	
+	\begin{proof} 
+		Assume, for the sake of contradiction, that $f$ is not injective. \\
+		Given that $f$ is not injective, this implies there exists some $\alpha_1, \alpha_2 \in A$ and $\beta \in B$ such that $f(\alpha_1) = f(\alpha_2) = \beta$. \\
+		However, since the composition $g \circ f$ is given to be injective, we know for any $\alpha_1, \alpha_2 \in A$ that $g \circ f (\alpha_{1}) \ne g \circ f (\alpha_{2})$. \\
+		Since $f(\alpha_1) = f(\alpha_2) = \beta$, this implies a contradiction that $g \circ f (\beta) \neq g \circ f (\beta)$, therefor $f$ must be injective.
+	\end{proof}
 
 %%% Problem p65 G.2
-\item {\bfseries p65 G.2.} Let $A$, $B$, and $C$ by sets. Prove that if $g \circ f$ is surjective, then $g$ is surjective.
+\item {\bfseries p65 G.2.} Let $A$, $B$, and $C$ by sets and let $f: A \rightarrow B$ and $g: B \rightarrow C$ be functions. Prove that if $g \circ f$ is surjective, then $g$ is surjective.
   
-	{\bfseries Solution.}
+	{\bfseries Solution.} Let $f, g$ be defined as above.
+  	
+  	\begin{proof}
+  		Assume, for the sake of contradiction, that $g$ is not surjective. \\
+		Given that $g$ is not surjective, this implies there exists some $\zeta \in C$ such that $g(\beta) \neq \zeta$ for any $\beta \in B$. \\ 
+		Because $g \circ f$ is surjective, we know for all $\zeta \in C, \exists \alpha \in A$ such that $g \circ f (\alpha) = \zeta$. \\
+		Unfolding this statement, it implies $\exists \beta \in B, \alpha \in A$ such that $g(f(\alpha)) = g(\beta) = \zeta$, which is a contradiction to our original assumption. Therefor $g$ must be surjective.
+	\end{proof}
   
 \newpage
 
